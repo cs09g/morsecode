@@ -280,6 +280,91 @@ morsecode.prototype = {
 		return result;
 	},
 
+	decode: function(str, type) {
+		var str = str.split(' ');
+		var sounds = '';
+		var result = '';
+		if (type === null || type === undefined) {
+			type = 'eng';
+		}
+
+		if (type === 'kor') {
+			// translate each sound from letter
+			var prev = '';
+			var combined = '';
+			var translated = '';
+			var i, j;
+
+			for (i = 0, len = str.length; i < len; i++) {
+				if (str[i] === '') {
+					sounds += ' ';
+				}
+
+				// str[i], prev: morsecode
+				if (this.koreanConsonants.indexOf(this.morsemap_kor[str[i]]) !== -1 &&
+					this.koreanConsonants.indexOf(this.morsemap_kor[prev]) !== -1) {
+
+					var combinatedConsonant = prev + ' ' + str[i];
+					combined = true;
+					translated = this.morsemap_kor[combinatedConsonant] || str[i];
+
+				} else {
+					translated = this.morsemap_kor[str[i]] || str[i];
+				}
+
+				if (combined) {
+					sounds = sounds.substr(0, sounds.length - 1) + translated + sounds.substr(sounds.length - 1 + translated.length);
+					combined = false;
+
+				} else {
+					sounds += translated;
+				}
+
+				prev = str[i];
+			}
+
+			// making a complete letter from sounds
+			sounds = sounds.replace(/  /g, ' ').split(' ');
+			
+			for (i = 0, str_len = sounds.length; i < str_len; i++) {
+				var letter = sounds[i];
+
+				if (letter) {
+					var initIdx = 0, midIdx = 0, lastIdx = 0;
+
+					
+					if (letter[0]) {
+						initIdx = this.koreanInitSound.indexOf(letter[0]);
+					}
+
+					if (letter[1]) {
+						midIdx = this.koreanMidSound.indexOf(letter[1]);
+					}
+
+					if (letter[2]) {
+						lastIdx = this.koreanLastSound.indexOf(letter[2]);
+					}
+
+					result += String.fromCharCode('가'.charCodeAt(0) + initIdx * 21 * 28 + midIdx * 28 + lastIdx);
+
+				} else {
+					result += ' ';
+				}
+			}
+
+		} else {
+			for (var i = 0, len = str.length; i < len; i++) {
+				if (this.morsemap_eng[str[i]]) {
+					result += this.morsemap_eng[str[i]];
+				} else {
+					result += ' ';
+				}
+			}
+		}
+
+		result = result.replace(/\s+/g, ' ');
+		return result;
+	},
 
 };
 
