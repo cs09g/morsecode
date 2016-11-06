@@ -63,3 +63,20 @@ Korean letter is composed with initial sound(cho-sung, 초성), middle sound(joo
 1. Each Korean letter should have two spaces
   * If each letter has one space between, it's impossible to recognize combined consonants. 
   
+###Usage:
+
+```javascript
+var morsecode = new morsecode();
+
+// encode
+// morsecode.encode(normal_string);
+morsecode.encode('안녕 세상');
+// -.- . ..-.  ..-. ... -.-     --. -.--  --. . -.-
+
+
+// decode
+// morsecode.decode(morsecode_string, type);
+// type: 'kor' || 'eng'
+morsecode.decode('-.- . ..-.  ..-. ... -.-     --. -.--  --. . -.-', 'kor');
+// 안녕 세상
+```
