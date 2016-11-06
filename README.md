@@ -48,3 +48,12 @@ Korean letter is composed with initial sound(cho-sung, 초성), middle sound(joo
   * Find the letter using the indexes from *each sound* array
 
 ###Decoding process:
+
+1. Getting each sound
+  * Find each sound from morse code map and stick together to tell that it will be a letter
+2. Translating to a letter
+  * Find indexes from each character of sounds
+  * Calculate unicode using each index.
+    * '가'.charCodeAt(0) + index of initial sound * 21 * 28 + index of middle sound * 28 + index of last sound
+  * Translating to character from unicode
+    * String.fromCharCord()
