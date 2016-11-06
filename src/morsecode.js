@@ -243,7 +243,7 @@ morsecode.prototype = {
 
 				// KOREAN
 				if (charAt >= 12593 && charAt <= 55203) { // 'ㄱ' ~ '힣'
-					charAt = str[i].charCodeAt(0) - 0xAC00;
+					charAt = str[i].charCodeAt(0) - '가'.charCodeAt(0);
 
 					var init, mid, last;
 					last = charAt % 28;
