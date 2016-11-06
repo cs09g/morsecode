@@ -57,3 +57,9 @@ Korean letter is composed with initial sound(cho-sung, 초성), middle sound(joo
     * '가'.charCodeAt(0) + index of initial sound * 21 * 28 + index of middle sound * 28 + index of last sound
   * Translating to character from unicode
     * String.fromCharCord()
+
+###Note:
+
+1. Each Korean letter should have two spaces
+  * If each letter has one space between, it's impossible to recognize combined consonants. 
+  
