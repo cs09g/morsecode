@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8'>
+<script src='../src/morsecode.js'></script>
+</head>
+<body>
+
+<input id='inputform'>
+
+<button type='button' id='encode'>ENCODE</button>
+<button type='button' id='decode'>DOCODE</button>
+<select id='type'>
+	<option value='eng'>English</option>
+	<option value='kor'>Korean</option>
+</select>
+<br><br>
+<textarea id="result" style="width:300px;height:200px;font-size:20px" readonly></textarea>
+<script>
+var morsecode = new morsecode();
+
+document.getElementById('encode').onclick = function() {
+	var str = document.getElementById('inputform').value;
+
+	document.getElementById('result').innerHTML = morsecode.encode(str);
+}
+
+document.getElementById('decode').onclick = function() {
+	var str = document.getElementById('inputform').value;
+	var type = document.getElementById('type').value;
+	
+	document.getElementById('result').innerHTML = morsecode.decode(str, type);
+}
+</script>
+
+</body>
+</html>
