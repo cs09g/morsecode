@@ -155,18 +155,21 @@ morsecode.prototype = {
 					init = this.koreanInitSound[init];
 					if (this.morsemap_kor[init]) {
 						result += this.morsemap_kor[init];
+
+						mid = this.koreanMidSound[mid];
+						if (this.morsemap_kor[mid]) {
+							result += ' ' + this.morsemap_kor[mid];
+						}
+
+						last = this.koreanLastSound[last]; 
+						if (this.morsemap_kor[last]) {
+							result += ' ' + this.morsemap_kor[last];
+						}
+
 					} else { // 초성/중성/종성이 조합된 형태가 아닐 경우 분리하지않은 원래 문자를 바로 찾는다
+
 						result += this.morsemap_kor[str[i]];
-					}
-
-					mid = this.koreanMidSound[mid];
-					if (this.morsemap_kor[mid]) {
-						result += ' ' + this.morsemap_kor[mid];
-					}
-
-					last = this.koreanLastSound[last]; 
-					if (this.morsemap_kor[last]) {
-						result += ' ' + this.morsemap_kor[last];
+					
 					}
 
 				} else {
