@@ -141,6 +141,11 @@ morsecode.prototype = {
 
 			} else { // Other characters
 
+				// To make sure letter starts
+				if (i !== 0) {
+					result += ' ';
+				}
+
 				var charAt = str[i].charCodeAt(0);
 
 				// KOREAN
