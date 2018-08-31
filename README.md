@@ -4,7 +4,7 @@ This is morsecode translator for English, Korean, Numbers.
 It seems quite easy to translate English and Numbers but Korean. 
 Korean letter is composed with initial sound(cho-sung, 초성), middle sound(joong-sung, 중성), last sound(jong-sung, 종성). So when it is being encoding, it should be seperated each sound and when it is being decoding, it should be combining back for complete letter. 
 
-###Here is a reference:
+### Here is a reference:
 
 1. each sound:
   * initial sound
@@ -34,7 +34,7 @@ Korean letter is composed with initial sound(cho-sung, 초성), middle sound(joo
     |기   |긱   |긲   |긴   |   |   |   |   |   |깋   |
     x 19 (fo all initial sound)
 
-###Encoding process:
+### Encoding process:
 
 1. Getting unicode
   * charCodeAt(0) returns Unicode of a letter
@@ -47,7 +47,7 @@ Korean letter is composed with initial sound(cho-sung, 초성), middle sound(joo
 3. Returning matching morsecode from morsecode map
   * Find the letter using the indexes from *each sound* array
 
-###Decoding process:
+### Decoding process:
 
 1. Getting each sound
   * Find each sound from morse code map and stick together to tell that it will be a letter
@@ -58,12 +58,12 @@ Korean letter is composed with initial sound(cho-sung, 초성), middle sound(joo
   * Translating to character from unicode
     * String.fromCharCord()
 
-###Note:
+### Note:
 
 1. Each Korean letter should have two spaces
   * If each letter has one space between, it's impossible to recognize combined consonants. 
   
-###Usage:
+### Usage:
 
 ```javascript
 var morsecode = new morsecode();
